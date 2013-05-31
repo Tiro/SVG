@@ -1,6 +1,10 @@
 
 .paper {
-  border: solid 1px red;
   height: 600px;
   width: 400px;
+}
+svg {
+  padding: 0;
+  margin: 0;
+  shape-rendering: crispEdges;
 }

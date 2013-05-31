@@ -3,15 +3,79 @@
   var SVG;
 
   SVG = (function() {
-    function SVG() {}
+    var ns;
 
-    SVG.prototype.initialize = function(containerElement) {
-      return this.containerElement = containerElement;
+    ns = "http://www.w3.org/2000/svg";
+
+    function SVG(containerElement) {
+      this.containerElement = containerElement;
+      this.el = document.createElementNS(ns, 'svg');
+      this.containerElement.appendChild(this.el);
+    }
+
+    SVG.prototype.showBorder = function() {
+      var strokeWidth;
+
+      strokeWidth = 1;
+      return this.rect(0, 0, this.containerElement.clientWidth - strokeWidth, this.containerElement.clientHeight - strokeWidth, {
+        stroke: 'blue',
+        fill: 'transparent',
+        'stroke-width': strokeWidth
+      });
+    };
+
+    SVG.prototype.shape = function(name, attributes, options) {
+      var key, shape, value;
+
+      if (attributes == null) {
+        attributes = {};
+      }
+      if (options == null) {
+        options = {};
+      }
+      shape = document.createElementNS(ns, name);
+      for (key in attributes) {
+        value = attributes[key];
+        shape.setAttribute(key, value);
+      }
+      for (key in options) {
+        value = options[key];
+        shape.setAttribute(key, value);
+      }
+      return this.el.appendChild(shape);
+    };
+
+    SVG.prototype.line = function(x1, y1, x2, y2, options) {
+      return this.shape('line', {
+        x1: x1,
+        y1: y1,
+        x2: x2,
+        y2: y2
+      }, options);
+    };
+
+    SVG.prototype.rect = function(x, y, width, height, options) {
+      return this.shape('rect', {
+        x: x,
+        y: y,
+        height: height,
+        width: width
+      }, options);
+    };
+
+    SVG.prototype.circle = function(x, y, r, options) {
+      return this.shape('circle', {
+        cx: x,
+        cy: y,
+        r: r
+      }, options);
     };
 
     return SVG;
 
   })();
+
+  window.SVG = SVG;
 
 }).call(this);
 
