@@ -1,0 +1,2 @@
+
+svg = new SVG('paper')

@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "svg.js",
+  "sourceRoot": "",
+  "sources": [
+    "svg.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,EAAA,GAAA;;CAAA,CAAM;CAEJ;;CAAA,EAAY,MAAC,CAAb,MAAY;CACT,EAAmB,CAAnB,SAAD,GAAA;CADF,IAAY;;CAAZ;;CAFF;CAAA"
+}
